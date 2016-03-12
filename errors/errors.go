@@ -56,6 +56,12 @@ func MaybePanic(err error) {
 	}
 }
 
+func Dangerous(msg string) {
+	if msg != "" {
+		panic(Error{Msg: msg, Code: http.StatusInternalServerError})
+	}
+}
+
 func Panic(msg string, args ...interface{}) {
 	panic(Error{Msg: fmt.Sprintf(msg, args...), Code: http.StatusInternalServerError})
 }
